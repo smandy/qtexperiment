@@ -1,0 +1,6 @@
+
+
+
+* Need to compile the ui file ( created by qtcreator), into a python file that can be used by pyside!
+
+pyside-uic mainwindow.ui -o mainwindow.py
