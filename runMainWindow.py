@@ -8,7 +8,6 @@ def makeLogger(ctx, s):
         #print dir(ctx.txtName)
     return ret
 
-
 def blurb():
     print "Blurb"
     
@@ -23,7 +22,6 @@ class ControlMainWindow(QtGui.QMainWindow):
         self.ui.pushButton_2.clicked.connect( makeLogger(self.ui, 'pushButton2'))
         self.ui.txtName.textChanged.connect( makeLogger(self.ui, 'text'))
         self.ui.radioButton.clicked.connect( makeLogger(self.ui, 'woot'))
-
         
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
