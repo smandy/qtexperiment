@@ -12,23 +12,8 @@
 
 http://cyrille.rossant.net/making-pyqt4-pyside-and-ipython-work-together/
 
-2 Comments
-Cyrille Rossant
- Login
-1
- Recommend
- Share
-Sort by Newest
-Avatar
-Join the discussion…
+*** Post
 
-Avatar
-Fernando Perez • 3 years ago
-Great post, thanks! Just a quick note: for IPython, both the gui and pylab options can also be activated at runtime on an as-needed basis, by typing either `%gui qt` or `%pylab qt`.
+    Great post, thanks! Just a quick note: for IPython, both the gui and pylab options can also be activated at runtime on an as-needed basis, by typing either `%gui qt` or `%pylab qt`.
 
-This lets you turn gui/pylab support on mid-way through an interactive session without having to change configurations and restart. It also permits selection of other GUI/pylab backends if desired.
- • Reply•Share › 
-Avatar
-Cyrille Rossant  Fernando Perez • 3 years ago
-Thanks for the tips!
- • Reply•Share › 
+    This lets you turn gui/pylab support on mid-way through an interactive session without having to change configurations and restart. It also permits selection of other GUI/pylab backends if desired.
