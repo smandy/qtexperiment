@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Thu Aug  6 00:41:58 2015
+# Created: Thu Aug  6 01:52:58 2015
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -16,7 +16,7 @@ class Ui_MainWindow(object):
         self.centralWidget = QtGui.QWidget(MainWindow)
         self.centralWidget.setObjectName("centralWidget")
         self.radioButton = QtGui.QRadioButton(self.centralWidget)
-        self.radioButton.setGeometry(QtCore.QRect(70, 180, 117, 22))
+        self.radioButton.setGeometry(QtCore.QRect(10, 80, 117, 22))
         self.radioButton.setObjectName("radioButton")
         self.pushButton = QtGui.QPushButton(self.centralWidget)
         self.pushButton.setGeometry(QtCore.QRect(10, 10, 99, 27))
@@ -27,6 +27,15 @@ class Ui_MainWindow(object):
         self.txtName = QtGui.QLineEdit(self.centralWidget)
         self.txtName.setGeometry(QtCore.QRect(230, 20, 251, 21))
         self.txtName.setObjectName("txtName")
+        self.dateTimeEdit = QtGui.QDateTimeEdit(self.centralWidget)
+        self.dateTimeEdit.setGeometry(QtCore.QRect(260, 70, 194, 27))
+        self.dateTimeEdit.setObjectName("dateTimeEdit")
+        self.timeEdit = QtGui.QTimeEdit(self.centralWidget)
+        self.timeEdit.setGeometry(QtCore.QRect(260, 110, 118, 27))
+        self.timeEdit.setObjectName("timeEdit")
+        self.dateEdit = QtGui.QDateEdit(self.centralWidget)
+        self.dateEdit.setGeometry(QtCore.QRect(260, 160, 111, 27))
+        self.dateEdit.setObjectName("dateEdit")
         MainWindow.setCentralWidget(self.centralWidget)
         self.menuBar = QtGui.QMenuBar(MainWindow)
         self.menuBar.setGeometry(QtCore.QRect(0, 0, 519, 25))

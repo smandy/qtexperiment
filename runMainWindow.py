@@ -1,11 +1,23 @@
 from mainwindow import *
 import sys
 
+
+fieldsOfInterest = ['dateEdit', 'dateTimeEdit', 'timeEdit']
+
+
 def makeLogger(ctx, s):
     def ret():
         b = ctx.radioButton.isChecked()  
         print "has been clicked %s %s" % (b, ctx.txtName.text() )
-        #print dir(ctx.txtName)
+        print (dir(ctx))
+
+        for x in fieldsOfInterest:
+            print "%s ================================================================================" % x
+
+            obj = getattr(ctx, x)
+            
+            for y in vars(obj):
+                print "%s boom %20s : %20s" % (obj, x,y)
     return ret
 
 def blurb():
