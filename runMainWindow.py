@@ -10,16 +10,13 @@ fieldsOfInterest = ['dateEdit', 'dateTimeEdit', 'timeEdit', 'horizontalSlider', 
 def makeLogger(ctx, s):
     def ret():
         b = ctx.radioButton.isChecked()  
-        print "has been clicked %s %s" % (b, ctx.txtName.text() )
-        print (dir(ctx))
+        print "has been clicked %s %s" % (s, ctx.txtName.text() )
+    return ret
 
-        for x in fieldsOfInterest:
-            print "%s ================================================================================" % x
-
-            obj = getattr(ctx, x)
-            
-            for y in vars(obj):
-                print "%s boom %20s : %20s" % (obj, x,y)
+def makeRb(btn, s):
+    def ret():
+        b = btn.isChecked()  
+        print "%s %s" % (b, s)
     return ret
 
 def slider(s, x):
@@ -41,8 +38,8 @@ class ControlMainWindow(QtGui.QMainWindow):
         self.ui.pushButton.clicked.connect(   makeLogger(self.ui,   'pushButton1'))
         self.ui.pushButton_2.clicked.connect( makeLogger(self.ui, 'pushButton2'))
         self.ui.txtName.textChanged.connect( makeLogger(self.ui, 'text'))
-        self.ui.radioButton.clicked.connect( makeLogger(self.ui, 'woot'))
-
+        
+        self.ui.radioButton.clicked.connect( makeRb(self.ui.radioButton, 'radioButton1'))
         self.ui.horizontalSlider.valueChanged.connect( slider('h', self.ui.horizontalSlider ))
         self.ui.verticalSlider.valueChanged.connect( slider('v', self.ui.verticalSlider))
         
