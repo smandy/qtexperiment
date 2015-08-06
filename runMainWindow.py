@@ -22,9 +22,9 @@ def makeLogger(ctx, s):
                 print "%s boom %20s : %20s" % (obj, x,y)
     return ret
 
-def slider(x, s):
+def slider(s, x):
     def ret():
-        print datetime.now(), x,s, x.value()
+        print s, x.value()
     return ret
 
 
@@ -43,8 +43,8 @@ class ControlMainWindow(QtGui.QMainWindow):
         self.ui.txtName.textChanged.connect( makeLogger(self.ui, 'text'))
         self.ui.radioButton.clicked.connect( makeLogger(self.ui, 'woot'))
 
-        self.ui.horizontalSlider.valueChanged.connect( slider(self.ui.horizontalSlider, 'h'))
-        self.ui.verticalSlider.valueChanged.connect( slider(self.ui.verticalSlider, 'v'))
+        self.ui.horizontalSlider.valueChanged.connect( slider('h', self.ui.horizontalSlider ))
+        self.ui.verticalSlider.valueChanged.connect( slider('v', self.ui.verticalSlider))
         
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
