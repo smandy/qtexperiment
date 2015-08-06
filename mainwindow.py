@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Thu Aug  6 01:52:58 2015
+# Created: Thu Aug  6 02:01:48 2015
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -36,6 +36,14 @@ class Ui_MainWindow(object):
         self.dateEdit = QtGui.QDateEdit(self.centralWidget)
         self.dateEdit.setGeometry(QtCore.QRect(260, 160, 111, 27))
         self.dateEdit.setObjectName("dateEdit")
+        self.horizontalSlider = QtGui.QSlider(self.centralWidget)
+        self.horizontalSlider.setGeometry(QtCore.QRect(30, 190, 160, 29))
+        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider.setObjectName("horizontalSlider")
+        self.verticalSlider = QtGui.QSlider(self.centralWidget)
+        self.verticalSlider.setGeometry(QtCore.QRect(440, 140, 29, 160))
+        self.verticalSlider.setOrientation(QtCore.Qt.Vertical)
+        self.verticalSlider.setObjectName("verticalSlider")
         MainWindow.setCentralWidget(self.centralWidget)
         self.menuBar = QtGui.QMenuBar(MainWindow)
         self.menuBar.setGeometry(QtCore.QRect(0, 0, 519, 25))
