@@ -9,17 +9,17 @@ class Foo:
         self.x = random.randint(5,10)
 
 class FooDelegate(QtGui.QStyledItemDelegate):
-
     def __init__(self):
         QtGui.QStyledItemDelegate.__init__(self)
         self.progressBar = QtGui.QStyleOptionProgressBarV2()
+        self.multiplier = 1.0
     
     def paint(self, painter, option, index):
         item = index.data()
-        print item, index.column(), item.toPyObject()
+        #print item, index.column(), item.toPyObject()
         progressBar = self.progressBar
         #progressBar = item.toPyObject()
-        print progressBar
+        #print progressBar
         progressBar.state = QtGui.QStyle.State_Enabled
         progressBar.direction = QtGui.QApplication.layoutDirection()
         progressBar.rect = option.rect
@@ -27,16 +27,17 @@ class FooDelegate(QtGui.QStyledItemDelegate):
         progressBar.minimum = 0
         progressBar.maximum = 100
         progressBar.textAlignment = Qt.AlignCenter
-
         d = item.toPyObject()
-        print 'd', d, type(d)
-        progressBar.progress = d  # for testing
+        #print 'd', d, type(d)
+        progressBar.progress = int(d * self.multiplier)  # for testing
         QtGui.QApplication.style().drawControl(QtGui.QStyle.CE_ProgressBar, progressBar, painter)
         #return super(FooDelegate, self).paint(painter, option, index)
         
 my_array = [['00','01','02', 20],
             ['10','11','12', 30],
             ['20','21','22', 40] ]
+
+fooDelegate = FooDelegate()
 
 fieldsOfInterest = ['dateEdit',
                     'dateTimeEdit',
@@ -58,19 +59,32 @@ def makeRb(btn, s):
 
 def slider(s, x, target = None):
     def ret():
-        print s, x.value()
+        #print s, x.value()
         if target:
             target.setValue(x.value())
+            fooDelegate.multiplier = x.value() / 100.0
+    return ret
+
+def slider2(s, x, target = None):
+    def ret():
+        #print s, x.value()
+        if target:
+            target.setValue(x.value())
+            fooDelegate.multiplier = x.value() / 100.0
+            w.tablemodel.fireChange()
+            #print "Boom"
     return ret
 
 def blurb():
     print "Blurb"
 
-
 class MyTableModel(QAbstractTableModel):
     def __init__(self, datain, parent=None, *args):
         QAbstractTableModel.__init__(self, parent, *args)
         self.arraydata = datain
+
+    def fireChange(self):
+        self.dataChanged.emit(self.createIndex(0, 0), self.createIndex(self.rowCount(0), self.columnCount(0)))
 
     def rowCount(self, parent):
         return len(self.arraydata)
@@ -115,15 +129,18 @@ class ControlMainWindow(QtGui.QMainWindow):
 
         self.ui.txtName.textChanged.connect( makeLogger(self.ui, 'text'))
         self.ui.radioButton.clicked.connect( makeRb(self.ui.radioButton, 'radioButton1'))
-        self.ui.horizontalSlider.valueChanged.connect( slider('h',
+        self.ui.horizontalSlider.valueChanged.connect( slider2('h',
                                                               self.ui.horizontalSlider,
                                                               self.ui.progressbar))
+
+        
         self.ui.verticalSlider.valueChanged.connect( slider('v', self.ui.verticalSlider, self.ui.horizontalSlider))
 
 
         self.tablemodel = MyTableModel(my_array, self)
-        self.ui.tableView.setItemDelegateForColumn(3, FooDelegate())
+        self.ui.tableView.setItemDelegateForColumn(3, fooDelegate)
         self.ui.tableView.setModel(self.tablemodel)
+        #self.ui.horizontalSlider.valueChanged.connect( self.tablemodel.dataChanged)
         
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)

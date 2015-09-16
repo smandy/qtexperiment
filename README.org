@@ -21,3 +21,14 @@ http://cyrille.rossant.net/making-pyqt4-pyside-and-ipython-work-together/
 This works! Even with ui files creatd by Qt5!
 
 pyuic4 mainwindow.ui  -o mainWindow.py
+
+
+
+
+
+
+https://forum.qt.io/topic/18102/put-and-animate-a-progress-bar-in-qtableview
+
+http://doc.qt.io/qt-4.8/qabstractitemview.html#setItemDelegateForColumn
+
+https://forum.qt.io/topic/4367/model-subclassing-how-to-signal-data-change/2
