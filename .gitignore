@@ -1,3 +1,8 @@
 /mainwindow.pyc
 /README.org~
 /mainwindow.ui.autosave
+/mainWindow.pyc
+*.pyc
+*.o
+qt1
+*~

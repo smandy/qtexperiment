@@ -22,6 +22,12 @@ private slots:
 
     void on_txtName_textChanged(const QString &arg1);
 
+    void on_pushButton_clicked(bool checked);
+
+    void on_verticalSlider_sliderMoved(int position);
+
+    void on_progressbar_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 };
